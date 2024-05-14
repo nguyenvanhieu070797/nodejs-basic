@@ -1,10 +1,33 @@
-const mysql = require("mysql2");
+// const mysql = require("mysql2");
+//
+// const pool = mysql.createPool({
+//     host: 'localhost',
+//     user: 'postgres',
+//     database: 'chats',
+//     password: '0905135826',
+//     port: 5432,
+// });
 
-const pool = mysql.createPool({
+
+const { Client } = require('pg');
+
+
+const client = new Client({
+    user: 'postgres',
+    password: '0905135826',
     host: 'localhost',
-    user: 'root',
-    database: 'node-complete',
-    password: '@Toikhongbiet',
+    port: '5432',
+    database: 'chats',
 });
 
-module.exports = pool.promise();
+client
+    .connect()
+    .then(() => {
+        console.log('Connected to PostgreSQL database');
+    })
+    .catch((err) => {
+        console.error('Error connecting to PostgreSQL database', err);
+    });
+
+
+module.exports = client;
