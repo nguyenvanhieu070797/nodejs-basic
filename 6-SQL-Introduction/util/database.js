@@ -9,25 +9,16 @@
 // });
 
 
-const { Client } = require('pg');
+const Pool = require("pg").Pool;
 
-
-const client = new Client({
+const proConfig = {
     user: 'postgres',
     password: '0905135826',
     host: 'localhost',
     port: '5432',
-    database: 'chats',
-});
+    database: 'node-complete',
+}
 
-client
-    .connect()
-    .then(() => {
-        console.log('Connected to PostgreSQL database');
-    })
-    .catch((err) => {
-        console.error('Error connecting to PostgreSQL database', err);
-    });
+const pool = new Pool(proConfig);
 
-
-module.exports = client;
+module.exports = pool;
