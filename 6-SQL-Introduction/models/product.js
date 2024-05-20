@@ -71,7 +71,7 @@ module.exports = class Product {
     return db.query("SELECT * FROM public.products");
   }
 
-  static findById(id) {
+  static findByPk(id) {
     console.log({id});
     return db.query("SELECT * FROM public.products WHERE products.id = $1", [id]);
   }
