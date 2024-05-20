@@ -11,12 +11,11 @@ const sequelize = new Sequelize(database, user, password, {
     dialect: 'postgres',
     define: {
         // If don't want createdAt
-        createdAt: false,
+        createdAt: true,
         // If don't want updatedAt
-        updatedAt: false,
-        timestamps: false
+        updatedAt: true,
+        timestamps: true
     },
 })
 
 module.exports = sequelize;
-
